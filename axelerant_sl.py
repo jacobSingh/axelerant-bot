@@ -26,8 +26,7 @@ def load_chain():
     return chain
 
 #chain = load_chain()
-docsearch = Pinecone.from_existing_index(PINECONE_INDEX_NAME, EMBEDDING)
-
+vectordb = Pinecone.from_existing_index(PINECONE_INDEX_NAME, EMBEDDING)
 # From here down is all the StreamLit UI.
 st.set_page_config(page_title="LangChain Demo", page_icon=":robot:")
 st.header("LangChain Demo")
@@ -48,9 +47,10 @@ user_input = get_text()
 
 if user_input:
     
-
-    docs = docsearch.similarity_search(user_input)
-    output = docs[0].page_content
+    qa = RetrievalQA.from_chain_type(llm=OpenAI(), chain_type="stuff", retriever=vectordb.as_retriever())
+    #docs = docsearch.similarity_search(user_input)
+    #output = docs[0].page_content
+    output = qa.run(user_input)
     
     #output = chain.run(input=user_input)
 
