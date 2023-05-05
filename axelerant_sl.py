@@ -26,7 +26,7 @@ def load_chain():
     return chain
 
 #chain = load_chain()
-docsearch = Pinecone.from_existing_index(index_name, embeddings)
+docsearch = Pinecone.from_existing_index(PINECONE_INDEX_NAME, EMBEDDING)
 
 # From here down is all the StreamLit UI.
 st.set_page_config(page_title="LangChain Demo", page_icon=":robot:")
