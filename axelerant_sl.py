@@ -6,8 +6,8 @@ from langchain.chains import RetrievalQA, RetrievalQAWithSourcesChain
 import pinecone
 
 pinecone.init(
-    api_key=os.environ['PINECONE_API_KEY'],  # find at app.pinecone.io
-    environment=os.environ['PINECONE_ENV']  # next to api key in console
+    api_key=st.secrets['PINECONE_API_KEY'],  # find at app.pinecone.io
+    environment=st.secrets['PINECONE_ENV']  # next to api key in console
 )
 
 EMBEDDING = OpenAIEmbeddings()
