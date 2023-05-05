@@ -50,8 +50,7 @@ if user_input:
     
 
     docs = docsearch.similarity_search(user_input)
-    print(docs)
-    output = docs[0].text
+    output = docs[0].page_content
     
     #output = chain.run(input=user_input)
 
