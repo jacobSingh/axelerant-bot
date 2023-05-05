@@ -3,6 +3,7 @@ import streamlit as st
 from streamlit_chat import message
 from langchain.vectorstores import Pinecone
 from langchain.chains import RetrievalQA, RetrievalQAWithSourcesChain
+from langchain.embeddings import OpenAIEmbeddings
 import pinecone
 
 pinecone.init(
@@ -48,7 +49,7 @@ user_input = get_text()
 if user_input:
     
 
-    docs = docsearch.similarity_search(query)
+    docs = docsearch.similarity_search(user_input)
     output = docs[0].text
     
     #output = chain.run(input=user_input)
