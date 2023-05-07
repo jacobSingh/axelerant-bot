@@ -50,6 +50,7 @@ if user_input:
     qa = RetrievalQA.from_chain_type(llm=OpenAI(), chain_type="stuff", retriever=vectordb.as_retriever())
     #docs = docsearch.similarity_search(user_input)
     #output = docs[0].page_content
+    
     output = qa.run(user_input)
     
     #output = chain.run(input=user_input)
